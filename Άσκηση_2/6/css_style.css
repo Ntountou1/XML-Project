@@ -1,0 +1,141 @@
+*{	display: block;
+	background-color:yellow;
+	
+	}
+	
+	online_bookshop{
+		border-style: solid;
+		border-color:red;
+		font-weight:bold;
+	}	
+
+
+name{
+	text-align:center;
+}
+
+Book_categories, Book_secondary_categories{
+	display: none
+}
+
+book_list{
+	text-align: center;
+}
+
+name{
+	background-color: white;
+	color: red;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	border-style:none;
+	}
+	 
+
+	
+book{
+	margin-top: 30px;
+	margin-bottom: 200px;
+	border-style:solid;
+	border-color:blue;
+	}	
+	
+book_titles_info:before{
+	display:block;
+	content: attr(title);
+	color: blue;
+	text-decoration: underline;
+	}	
+	
+	
+	
+authors:before{
+	content:'Συγγραφείς:';
+	color:red;
+	}
+
+authors:after{
+	content: attr(author_id);
+	color:green;
+	display: block;
+}	
+
+
+
+ISBN:before{
+	
+	content:'ISBN:';
+	color:	red;
+	display:block;
+
+	}
+
+	
+	
+perilipsi:before{
+	content:'Περιγραφή βιβλίου:';
+	color: red; 
+	display:block;
+}	
+	
+
+
+dimensions:before{
+	content:'Διαστάσεις:';
+	color: red; 
+	display:block;
+}
+
+publisher:before{
+	content:'Εκδότης:';
+	color: red; 
+	display:block;
+}
+
+publisher:after{
+	content:attr(publisher_year);
+	color: green; 
+	display:block;
+	}
+	
+pages:before{
+	content:'Σελίδες:';
+	color: red; 
+	display:block;
+	}	
+	
+language:before{
+	content:'Γλώσσα:';
+	color: red; 
+	display:block;
+}	
+
+start_value:before{
+	content:'Αρχική τιμή:';
+	color: red; 
+	display:block;
+}
+
+end_value:before{
+	content:'Αρχική τιμή:';
+	color: red; 
+	display:block;
+}
+
+diathesimotita:before{
+	content:'Διαθεσιμότητα:';
+	color: red; 
+	display:block;
+}
+
+authors, ISBN, perilipsi,dimensions, publisher, pages, language, start_value, end_value, diathesimotita{
+
+	color:green;
+	margin-top:15px;
+}
+
+contact_details{
+	color:purple;
+	font-size:20px;
+	margin-bottom:2px;
+	padding-left:20px;
+}

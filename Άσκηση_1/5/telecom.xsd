@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="isp">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="list_of_programs" />
+				<xs:element ref="list_of_offers" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="est" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="list_of_programs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="program" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="list_of_offers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="offers" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="program">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="program_name" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="secondary_mobile_category" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="secondary_landline_category" />
+				<xs:element ref="offer_packet" />
+				<xs:element ref="contract_commitment" />
+				<xs:choice minOccurs="0" maxOccurs="1">
+					<xs:element ref="new_sim_card" />
+					<xs:element ref="new_router" />
+					<xs:element ref="new_decoder" />
+				</xs:choice>
+				<xs:element ref="list_of_benefits" />
+				<xs:element ref="list_of_prices" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="list_extra_fees" />
+			</xs:sequence>
+			<xs:attribute name="program_id" type="xs:ID" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="program_name">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute default="mobile" name="gravamen">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="mobile" />
+								<xs:enumeration value="home_teleph_and_internet" />
+								<xs:enumeration value="TV" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="tariffs" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="secondary_mobile_category">
+		<xs:complexType>
+			<xs:attribute name="mobile_price" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="Symvolaio" />
+						<xs:enumeration value="Kartoprogramma" />
+						<xs:enumeration value="Kartokinito" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="secondary_landline_category">
+		<xs:complexType>
+			<xs:attribute name="landline_price" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="GigaFiber" />
+						<xs:enumeration value="VDSL" />
+						<xs:enumeration value="ADSL" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="offer_packet">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element minOccurs="0" maxOccurs="1" ref="data" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="same_isp_mobile_calls" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="same_isp_landline_calls" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="mobile_to_landline_calls" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="landline_to_landline_calls" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="landline_to_mobile" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="mobile_balance" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="international_calls" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="same_isp_mobile_message_number" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="same_country_mobile_message_number" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="different_country_mobile_message_number" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="tv_channels" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="internet_speed" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tv_channels">
+		<xs:complexType>
+			<xs:attribute name="number_of_channels" type="xs:string" use="required" />
+			<xs:attribute name="kids_channels" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes" />
+						<xs:enumeration value="no" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="sport_channels" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes" />
+						<xs:enumeration value="no" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute default="no" name="ondemand">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes" />
+						<xs:enumeration value="no" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="data" type="xs:string" />
+	<xs:element name="same_isp_mobile_calls" type="xs:string" />
+	<xs:element name="same_isp_landline_calls" type="xs:string" />
+	<xs:element name="mobile_to_landline_calls" type="xs:string" />
+	<xs:element name="landline_to_landline_calls" type="xs:string" />
+	<xs:element name="landline_to_mobile" type="xs:string" />
+	<xs:element name="mobile_balance" type="xs:string" />
+	<xs:element name="same_isp_mobile_message_number" type="xs:string" />
+	<xs:element name="same_country_mobile_message_number" type="xs:string" />
+	<xs:element name="different_country_mobile_message_number" type="xs:string" />
+	<xs:element name="internet_speed" type="xs:string" />
+	<xs:element name="international_calls">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="free_call_time" />
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="allowed_country_for_calls" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="free_call_time" type="xs:string" />
+	<xs:element name="allowed_country_for_calls">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="country_name" />
+			</xs:sequence>
+			<xs:attribute default="stathera" name="allowed_call_type">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="kinita" />
+						<xs:enumeration value="stathera" />
+						<xs:enumeration value="kinita_kai_stathera" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="country_name" type="xs:string" />
+	<xs:element name="contract_commitment" type="xs:string" />
+	<xs:element name="new_sim_card">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute default="no" name="acquisition_right_sim_card">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="yes" />
+								<xs:enumeration value="no" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="sim_card_cost" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="new_router">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="router_price" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="new_decoder">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="decoder_price" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="list_of_benefits">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="benefits" />
+			</xs:sequence>
+			<xs:attribute name="number_of_benefits" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="benefits" type="xs:string" />
+	<xs:element name="list_extra_fees">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" ref="activation_fees" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="installation_fees" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="activation_fees" type="xs:string" />
+	<xs:element name="installation_fees" type="xs:string" />
+	<xs:element name="list_of_prices">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="price" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="price">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="customer_type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="new_customer" />
+								<xs:enumeration value="old_customer" />
+								<xs:enumeration value="company" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="offers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="offer_time" />
+				<xs:element ref="contract_offer_time" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="gifts" />
+			</xs:sequence>
+			<xs:attribute name="target_id" type="xs:IDREF" use="required" />
+			<xs:attribute name="new_price" type="xs:string" use="required" />
+			<xs:attribute name="FPA_price" type="xs:string" use="required" />
+			<xs:attribute name="customer_type" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="offer_time">
+		<xs:complexType>
+			<xs:attribute name="from" type="xs:string" use="required" />
+			<xs:attribute name="to" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="contract_offer_time" type="xs:string" />
+	<xs:element name="gifts">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="gift_category" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="online_bookshop">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name" />
+				<xs:element ref="author_list" />
+				<xs:element ref="Book_categories" />
+				<xs:element ref="Book_secondary_categories" />
+				<xs:element ref="book_list" />
+				<xs:element ref="contact_details" />
+			</xs:sequence>
+			<xs:attribute name="free_ship" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="name" type="xs:string" />
+	<xs:element name="author_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="author" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="author">
+		<xs:complexType>
+			<xs:attribute name="auid" type="xs:ID" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Book_categories">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="book_category" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="book_category">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="category_id" type="xs:ID" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Book_secondary_categories">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="secondary_category" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="secondary_category">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="sub_cat" type="xs:ID" use="required" />
+					<xs:attribute name="category" type="xs:IDREFS" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="book_list">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="book" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="book">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="book_titles_info" />
+				<xs:element ref="authors" />
+				<xs:element ref="ISBN" />
+				<xs:element ref="book_descr" />
+				<xs:element ref="book_characteristics" />
+				<xs:element ref="cost_information" />
+				<xs:element ref="other_information" />
+			</xs:sequence>
+			<xs:attribute name="book_id" type="xs:ID" use="required" />
+			<xs:attribute name="category" type="xs:IDREFS" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="book_titles_info">
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="required" />
+			<xs:attribute name="subtitle" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="authors">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" ref="other_partners" />
+			</xs:sequence>
+			<xs:attribute name="author_id" type="xs:IDREFS" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ISBN" type="xs:string" />
+	<xs:element name="book_descr">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="perilipsi" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="for_ages" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="perilipsi" type="xs:string" />
+	<xs:element name="for_ages" type="xs:string" />
+	<xs:element name="other_partners">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="Illustration" />
+				<xs:element ref="Translation" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Illustration" type="xs:string" />
+	<xs:element name="Translation" type="xs:string" />
+	<xs:element name="book_characteristics">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" ref="dimensions" />
+				<xs:element ref="publisher" />
+				<xs:element ref="pages" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="weight" />
+				<xs:element ref="language" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dimensions">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute default="cm" name="unit" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="publisher">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="publisher_year" type="xs:string" use="required" />
+					<xs:attribute name="publishing_country" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pages" type="xs:string" />
+	<xs:element name="weight">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute default="gr" name="w_unit">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="pounds" />
+								<xs:enumeration value="gr" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="language" type="xs:string" />
+	<xs:element name="cost_information">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="start_value" />
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="end_value" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="start_value">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute default="euro" name="currency" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="end_value">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute default="euro" name="currency" type="xs:string" />
+					<xs:attribute default="no" name="with_discount">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="yes" />
+								<xs:enumeration value="no" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="percent_of_discount" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="other_information">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="diathesimotita" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diathesimotita">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="apostoli_se" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="contact_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="address" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="tel" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="email" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="address">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tel" type="xs:string" />
+	<xs:element name="email" type="xs:string" />
+</xs:schema>

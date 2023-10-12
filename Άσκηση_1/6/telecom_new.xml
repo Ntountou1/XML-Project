@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml-stylesheet type="text/xsl" href="programs_present1.xsl" version="1.0"?> -->
+<?xml-stylesheet type="text/xsl" href="programs_present2.xsl" version="1.0"?>
+
+
+<!DOCTYPE isp[
+    <!ELEMENT isp (list_of_programs,list_of_offers)>
+
+    <!ATTLIST isp name CDATA #REQUIRED>
+    <!ATTLIST isp est CDATA #REQUIRED> 
+
+    <!ELEMENT list_of_programs (program+)>
+    <!ELEMENT list_of_offers (offers*)>
+    <!ATTLIST program program_id ID #REQUIRED>
+    <!ELEMENT program (program_name,secondary_mobile_category?,secondary_landline_category?,offer_packet,contract_commitment,(new_sim_card|new_router|new_decoder)?,list_of_benefits,list_of_prices,list_extra_fees?)>
+   
+    <!ELEMENT program_name (#PCDATA)>
+    
+    <!ATTLIST program_name gravamen (mobile|home_teleph_and_internet|TV) "mobile"  > 
+
+    <!ATTLIST program_name tariffs CDATA #REQUIRED>
+    <!ELEMENT secondary_mobile_category EMPTY>
+    <!ATTLIST secondary_mobile_category mobile_price (Symvolaio|Kartoprogramma|Kartokinito) #REQUIRED >
+    <!ELEMENT secondary_landline_category EMPTY>
+    <!ATTLIST secondary_landline_category landline_price   (GigaFiber|VDSL|ADSL) #REQUIRED>
+
+    <!ELEMENT offer_packet (data?,same_isp_mobile_calls?,same_isp_landline_calls?,mobile_to_landline_calls?,landline_to_landline_calls?,landline_to_mobile?,mobile_balance?,international_calls?,same_isp_mobile_message_number?,same_country_mobile_message_number?,different_country_mobile_message_number?,tv_channels?,internet_speed?)*>
+
+    <!ELEMENT tv_channels EMPTY>
+
+    <!ELEMENT data (#PCDATA)>
+    <!ELEMENT same_isp_mobile_calls (#PCDATA)>
+    <!ELEMENT same_isp_landline_calls (#PCDATA)>
+    <!ELEMENT mobile_to_landline_calls (#PCDATA)>
+    <!ELEMENT landline_to_landline_calls (#PCDATA)>
+    <!ELEMENT landline_to_mobile (#PCDATA)>
+    <!ELEMENT mobile_balance (#PCDATA)>
+    <!-- <!ELEMENT international_calls ANY>  -->
+    <!ELEMENT same_isp_mobile_message_number (#PCDATA)>
+    <!ELEMENT same_country_mobile_message_number (#PCDATA)>
+    <!ELEMENT different_country_mobile_message_number (#PCDATA)>
+    <!ELEMENT internet_speed (#PCDATA)>
+
+    <!ELEMENT international_calls (free_call_time,allowed_country_for_calls+)>
+    <!ELEMENT free_call_time (#PCDATA)>
+    <!ELEMENT allowed_country_for_calls (country_name)>
+    <!ELEMENT country_name (#PCDATA)>
+    <!ATTLIST allowed_country_for_calls allowed_call_type (kinita|stathera|kinita_kai_stathera) "stathera"> 
+
+    <!ELEMENT contract_commitment (#PCDATA)>
+
+    <!ELEMENT new_sim_card (#PCDATA)>
+    <!ATTLIST new_sim_card acquisition_right_sim_card  (yes|no) "no">
+    <!ATTLIST new_sim_card sim_card_cost  CDATA #IMPLIED > <!--αμα εχει το προηγουμενο σαν τιμη ναι-->
+    
+    <!ELEMENT new_router (#PCDATA)>
+    <!ATTLIST new_router router_price CDATA #REQUIRED> 
+    <!ELEMENT new_decoder (#PCDATA)>
+    <!ATTLIST new_decoder decoder_price CDATA #REQUIRED> 
+
+    
+    <!ATTLIST tv_channels number_of_channels CDATA #REQUIRED>
+    <!ATTLIST tv_channels kids_channels  (yes|no) #REQUIRED>
+    <!ATTLIST tv_channels sport_channels  (yes|no) #REQUIRED>
+    <!ATTLIST tv_channels ondemand (yes|no) "no">  
+
+    <!ELEMENT list_of_benefits (benefits*)>
+    <!ATTLIST list_of_benefits number_of_benefits CDATA #REQUIRED>
+    <!ELEMENT benefits (#PCDATA)>
+    <!ELEMENT list_extra_fees (activation_fees?,installation_fees?)>
+    <!ELEMENT activation_fees (#PCDATA)>
+    <!ELEMENT installation_fees (#PCDATA)>
+
+    <!ELEMENT list_of_prices (price*)>
+    <!ELEMENT price (#PCDATA)>
+    <!ATTLIST price customer_type  (new_customer|old_customer|company) #REQUIRED >
+
+
+    <!ATTLIST offers target_id IDREF #REQUIRED >
+    <!ATTLIST offers new_price CDATA #REQUIRED >
+    <!ATTLIST offers FPA_price CDATA #REQUIRED >
+    <!ATTLIST offers customer_type CDATA #REQUIRED >
+    <!ELEMENT offers (offer_time, contract_offer_time,gifts*)>
+    <!ELEMENT offer_time EMPTY>
+    <!ATTLIST offer_time from CDATA #REQUIRED >
+    <!ATTLIST offer_time to CDATA #REQUIRED >
+    <!ELEMENT contract_offer_time (#PCDATA) >
+    <!ELEMENT gifts (#PCDATA)>
+
+    <!ATTLIST gifts gift_category CDATA #IMPLIED >
+
+    <!NOTATION jpeg SYSTEM "image/jpeg">
+    <!ENTITY giftPhone SYSTEM "phone1.jpg" NDATA jpeg>
+    <!ELEMENT img EMPTY>
+    <!ATTLIST  gifts photos ENTITY #IMPLIED >
+
+
+
+]>
+
+<isp name="cosmote" est="1999">
+    <list_of_programs>
+        <program program_id="k042">
+
+            <program_name gravamen="mobile" tariffs="10000">Mobile 1</program_name>
+            <secondary_mobile_category mobile_price="Symvolaio"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>1000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>1000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>500min</mobile_to_landline_calls>
+                <landline_to_landline_calls>500min</landline_to_landline_calls>
+                <landline_to_mobile>400min</landline_to_mobile>
+                <mobile_balance>10.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>300min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">39.99$</price>
+                <price customer_type="old_customer">49.99$</price>
+                <price customer_type="company">54.99$</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+            <!--programma 1 -->
+        </program>
+
+        <program program_id="k043">
+
+            <program_name gravamen="mobile" tariffs="10000">Mobile 2</program_name>
+            <secondary_mobile_category mobile_price="Kartokinito"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>1000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>1000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>500min</mobile_to_landline_calls>
+                <landline_to_landline_calls>500min</landline_to_landline_calls>
+                <landline_to_mobile>400min</landline_to_mobile>
+                <mobile_balance>10.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>300min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">39.99$</price>
+                <price customer_type="old_customer">49.99$</price>
+                <price customer_type="company">54.99$</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+            <!--programma 1 -->
+        </program>
+        <program program_id="k044">
+
+            <program_name gravamen="mobile" tariffs="10000">Mobile 3</program_name>
+            <secondary_mobile_category mobile_price="Kartoprogramma"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>1000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>1000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>500min</mobile_to_landline_calls>
+                <landline_to_landline_calls>500min</landline_to_landline_calls>
+                <landline_to_mobile>400min</landline_to_mobile>
+                <mobile_balance>10.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>300min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">49.99$</price>
+                <price customer_type="old_customer">39.99$</price>
+                <price customer_type="company">69.99$</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+
+        </program>
+        <!--programma 2 -->
+        <program program_id="k045">
+
+            <program_name gravamen="home_teleph_and_internet" tariffs="10000">Home 1</program_name>
+            <secondary_mobile_category mobile_price="Symvolaio"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>1000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>1000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>500min</mobile_to_landline_calls>
+                <landline_to_landline_calls>500min</landline_to_landline_calls>
+                <landline_to_mobile>400min</landline_to_mobile>
+                <mobile_balance>10.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>300min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">19.99$</price>
+                <price customer_type="old_customer">24.99$</price>
+                <price customer_type="company">-</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+
+        </program>
+            <!--programma 3 -->
+        <program program_id="k046">
+
+            <program_name gravamen="home_teleph_and_internet" tariffs="10000">Home 2</program_name>
+            <secondary_mobile_category mobile_price="Symvolaio"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>2000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>3000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>600min</mobile_to_landline_calls>
+                <landline_to_landline_calls>600min</landline_to_landline_calls>
+                <landline_to_mobile>100min</landline_to_mobile>
+                <mobile_balance>13.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>400min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">39.99$</price>
+                <price customer_type="old_customer">49.99$</price>
+                <price customer_type="company">-</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+
+        </program>
+            <!--programma 5-->
+        <program program_id="k047">
+
+            <program_name gravamen="TV" tariffs="10000">Corporate 1</program_name>
+            <secondary_mobile_category mobile_price="Symvolaio"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>2000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>3000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>600min</mobile_to_landline_calls>
+                <landline_to_landline_calls>600min</landline_to_landline_calls>
+                <landline_to_mobile>100min</landline_to_mobile>
+                <mobile_balance>13.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>400min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">-</price>
+                <price customer_type="old_customer">-</price>
+                <price customer_type="company">34.99$</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+
+        </program>
+
+        <!--programma 6-->
+        <program program_id="k048">
+
+            <program_name gravamen="TV" tariffs="10000">Corporate 2</program_name>
+            <secondary_mobile_category mobile_price="Symvolaio"></secondary_mobile_category>
+            <secondary_landline_category landline_price="GigaFiber"></secondary_landline_category>
+            <offer_packet>
+                <data>1gb</data>
+                <same_isp_mobile_calls>2000min</same_isp_mobile_calls> 
+                <same_isp_landline_calls>3000min</same_isp_landline_calls>
+                <mobile_to_landline_calls>600min</mobile_to_landline_calls>
+                <landline_to_landline_calls>600min</landline_to_landline_calls>
+                <landline_to_mobile>100min</landline_to_mobile>
+                <mobile_balance>13.07</mobile_balance>
+                <international_calls>
+                    <free_call_time>400min</free_call_time>
+                    <allowed_country_for_calls allowed_call_type="stathera">
+                        <country_name>USA</country_name>
+                    </allowed_country_for_calls>
+                </international_calls>
+                <same_isp_mobile_message_number>500 messages</same_isp_mobile_message_number>
+                <same_country_mobile_message_number>500 messages</same_country_mobile_message_number>
+                <different_country_mobile_message_number>100 messages</different_country_mobile_message_number>
+                <tv_channels number_of_channels="30" kids_channels="yes" sport_channels="yes" ondemand="no"></tv_channels>
+                <internet_speed>50gb</internet_speed>
+            </offer_packet>
+            <contract_commitment>1 year</contract_commitment>
+            <new_sim_card acquisition_right_sim_card="yes" sim_card_cost="10.00"></new_sim_card>
+            <list_of_benefits number_of_benefits="23">
+                <benefits></benefits>
+            </list_of_benefits>
+            <list_of_prices>
+                <price customer_type="new_customer">-</price>
+                <price customer_type="old_customer">-</price>
+                <price customer_type="company">44.99$</price>
+            </list_of_prices>
+            <list_extra_fees>
+                <activation_fees>20$</activation_fees>
+                <installation_fees>20$</installation_fees>
+            </list_extra_fees>
+
+        </program>
+
+    </list_of_programs>
+    <list_of_offers>
+        <offers target_id="k043" new_price="15" FPA_price="1" customer_type="old_customer">
+            <offer_time from="1-1-2010" to="1-1-2011"></offer_time>
+            <contract_offer_time></contract_offer_time>
+            <gifts gift_category="syskeyh" photos="giftPhone">I-PHONE 7</gifts>
+        </offers>
+
+        <offers target_id="k044" new_price="15" FPA_price="1" customer_type="old_customer">
+            <offer_time from="1-1-2010" to="1-1-2011"></offer_time>
+            <contract_offer_time></contract_offer_time>
+            <gifts gift_category="syskeyh" photos="giftPhone">I-PHONE 7</gifts>
+        </offers>
+
+        <offers target_id="k045" new_price="15" FPA_price="1" customer_type="old_customer">
+            <offer_time from="1-1-2010" to="1-1-2011"></offer_time>
+            <contract_offer_time></contract_offer_time>
+            <gifts gift_category="syskeyh" photos="giftPhone">I-PHONE 7</gifts>
+        </offers>
+
+        <offers target_id="k046" new_price="15" FPA_price="1" customer_type="old_customer">
+            <offer_time from="1-1-2010" to="1-1-2011"></offer_time>
+            <contract_offer_time></contract_offer_time>
+            <gifts gift_category="syskeyh" photos="giftPhone">I-PHONE 7</gifts>
+        </offers>
+
+    </list_of_offers>
+
+</isp>
